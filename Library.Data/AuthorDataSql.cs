@@ -26,12 +26,12 @@ namespace Library.Data
 			return temp.Entity;
 		}
 
-		public Author Delete(Author author)
+		public Author Delete(int Id)
 		{
-			var temp = libraryDbContext.Authors.SingleOrDefault(r => r.Id == author.Id);
+			var temp = libraryDbContext.Authors.SingleOrDefault(r => r.Id == Id);
 			if(temp != null)
 			{
-				libraryDbContext.Authors.Remove(author);
+				libraryDbContext.Authors.Remove(temp);
 			}
 			return temp;
 		}

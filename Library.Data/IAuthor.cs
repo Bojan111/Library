@@ -12,6 +12,6 @@ namespace Library.Data
 		Author Create(Author author);
 		Author Update(Author author);
 		int Commit();
-		Author Delete(Author author);
+		Author Delete(int Id);
 	}
 }

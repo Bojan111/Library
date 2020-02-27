@@ -1,35 +1,14 @@
-﻿@model LibraryMVCProjects.Models.AuthorEditModel
+﻿@model Library.Core.Author
 @{
     ViewData["Title"] = "Delete";
 }
 
-<h3>Are you sure you want to delete Author?</h3>
-
-<div class="row">
-    <div class="col-5">
-        <table class="table">
-            <tr>
-                <td class="font-weight-bold">
-                    First Name
-                </td>
-                <td>
-                    @Model.Author?.FirstName
-                </td>
-            </tr>
-            <tr>
-                <td class="font-weight-bold">
-                    Last Name
-                </td>
-                <td>
-                    @Model.Author?.LastName
-                </td>
-            </tr>
-        </table>
-        <form method="post">
-            <button class="btn btn-danger" type="submit">Delete</button>
-            <a class="btn btn-primary" asp-controller="AuthorMVC" asp-action="Index">Back to List</a>
-        </form>
-
-    </div>
-
+<h2>Delete!</h2>
+<div class="alert alert-danger">
+    Are you sure you want to delete @Model.FirstName @Model.LastName?
 </div>
+<form method="post">
+    <input type="hidden" asp-for="@Model.Id" />
+    <button type="submit" class="btn btn-danger">Yes!</button>
+    <a asp-action="Index" class="btn btn-outline-primary">Cancel</a>
+</form>

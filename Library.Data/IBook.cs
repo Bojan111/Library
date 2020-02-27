@@ -10,7 +10,7 @@ namespace Library.Data
 		IEnumerable<Book> GetBooksByTitle(string name = null);
 		IEnumerable<Book> GetBooks(string bookTitle = null, string name = null);
 		Book GetBookById(int Id);
-		Book Delete(Book book);
+		Book Delete(int Id);
 		Book Create(Book book);
 
 		Book Update(Book book);

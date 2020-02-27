@@ -85,5 +85,29 @@ namespace LibraryMVCProjects.Controllers
 			model.Authors = new SelectList(authors, "Id", "Display");
 			return View(model);
 		}
+		[HttpGet]
+		public IActionResult Delete(int Id)
+		{
+			var books = book.GetBookById(Id);
+			if (books == null)
+			{
+				return View("NotFound");
+			}
+
+			return View(books);
+		}
+		[HttpPost]
+		public IActionResult Delete(Book model)
+		{
+			var temp = book.Delete(model.Id);
+			if (temp == null)
+			{
+				return View("NotFound");
+			}
+
+			book.Commit();
+			TempData["Message"] = "The Object is deleted!";
+			return RedirectToAction("Index");
+		}
 	}
 }

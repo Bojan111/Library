@@ -26,12 +26,12 @@ namespace Library.Data
 			return books.Entity;
 		}
 
-		public Book Delete(Book book)
+		public Book Delete(int Id)
 		{
-			var delete = libraryDbContext.Books.SingleOrDefault(r => r.Id == book.Id);
+			var delete = libraryDbContext.Books.SingleOrDefault(r => r.Id == Id);
 			if(delete != null)
 			{
-				libraryDbContext.Books.Remove(book);
+				libraryDbContext.Books.Remove(delete);
 			}
 			return delete;
 		}

@@ -72,34 +72,29 @@ namespace LibraryMVCProjects.Controllers
 			}
 			return View(model);
 		}
-		//[HttpGet]
-		//public IActionResult Delete(int? Id)
-		//{
-		//	var model = new AuthorEditModel();
-		//	if (Id == null)
-		//	{
-		//		return RedirectToPage("NotFound");
-		//	}
-		//	model.Author = author.GetAuthorById(Id.Value);
-		//	if (model.Author == null)
-		//	{
-		//		return RedirectToPage("NotFound");
-		//	}
-		//	return View(model);
-		//}
-		//[HttpPost]
-		//public IActionResult Delete(AuthorEditModel model)
-		//{
-		//	if (model.Author != null)
-		//	{
-		//		author.Delete(model.Author);
-		//		author.Commit();
+		[HttpGet]
+		public IActionResult Delete(int Id)
+		{
+			var authors = author.GetAuthorById(Id);
+			if (authors == null)
+			{
+				return View("NotFound");
+			}
 
-		//		TempData["DeleteMessage"] = "Author successfully deleted!";
+			return View(authors);
+		}
+		[HttpPost]
+		public IActionResult Delete(Author model)
+		{
+			var temp = author.Delete(model.Id);
+			if (temp == null)
+			{
+				return View("NotFound");
+			}
 
-		//		return RedirectToPage("Index");
-		//	}
-		//	return View(model);
-		//}
+			author.Commit();
+			TempData["Message"] = "The Object is deleted!";
+			return RedirectToAction("Index");
+		}
 	}
 }

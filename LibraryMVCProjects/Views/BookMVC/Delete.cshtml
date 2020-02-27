@@ -1,29 +1,14 @@
-﻿@model LibraryMVCProjects.Models.BookEditModel
+﻿@model Library.Core.Book
 @{
-    ViewData["Title"] = "BookDelete";
+    ViewData["Title"] = "Delete";
 }
 
-
-<h3>Are you sure you want to delete Book?</h3>
-
-<div class="row">
-    <div class="col-5">
-        <table class="table">
-            <tr>
-                <td class="font-weight-bold">
-                    Book Title
-                </td>
-                <td>
-                    @Model.Book.Title
-                </td>
-            </tr>
-        </table>
-        <form method="post">
-            <input type="hidden" asp-for="Book.Id" />
-            <button class="btn btn-danger" type="submit">Delete</button>
-            <a class="btn btn-primary" asp-controller="BookMVC" asp-action="Index">Back to List</a>
-        </form>
-
-    </div>
-
+<h2>Delete!</h2>
+<div class="alert alert-danger">
+    Are you sure you want to delete @Model.Title
 </div>
+<form method="post">
+    <input type="hidden" asp-for="@Model.Id" />
+    <button type="submit" class="btn btn-danger">Yes!</button>
+    <a asp-action="Index" class="btn btn-outline-primary">Cancel</a>
+</form>
