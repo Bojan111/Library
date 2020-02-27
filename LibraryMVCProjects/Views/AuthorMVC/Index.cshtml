@@ -1,0 +1,49 @@
+﻿@model LibraryMVCProjects.Models.AuthorViewModel
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>Authors</h1>
+
+<div>
+    <form method="get">
+        <div class="form-group">
+            <div class="input-group">
+                <input type="search" class="form-control" placeholder="search" asp-for="SearchTerm">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Authors</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model.Authors)
+        {
+            <tr>
+                <td>@item.FirstName @item.LastName</td>
+                <td>
+                    <a class="btn btn-outline-secondary" asp-route-Id="@item.Id" asp-action="Detail"><i class="fas fa-search"></i></a>
+                    <a class="btn btn-outline-secondary" asp-route-Id="@item.Id" asp-action="Edit"><i class="fas fa-edit"></i></a>
+                    @*<a class="btn btn-success" asp-route-Id="@item.Id" asp-action="Delete"><i class="fas fa-trash"></i></a>*@
+                </td>
+
+            </tr>
+        }
+    </table>
+</div>
+<div class="form-group">
+    <a class="btn btn-success" asp-controller="AuthorMVC" asp-action="Edit">Add Author</a>
+</div>
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert alert-info">
+        @Model.Message
+    </div>
+}

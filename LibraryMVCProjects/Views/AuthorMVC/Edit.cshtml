@@ -1,0 +1,24 @@
+﻿@model LibraryMVCProjects.Models.AuthorEditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editing @Model.Author.FirstName @Model.Author.LastName</h1>
+<form method="post">
+    <input type="hidden" asp-for="Author.Id" />
+    <div class="form-row">
+        <div class="form-group col-sm-12">
+            <label asp-for="Author.FirstName"></label>
+            <input class="form-control" asp-for="Author.FirstName" />
+            <span class="text-danger" asp-validation-for="Author.FirstName"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-sm-12">
+            <label asp-for="Author.LastName"></label>
+            <input class="form-control" asp-for="Author.LastName" />
+            <span class="text-danger" asp-validation-for="Author.LastName"></span>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

@@ -1,0 +1,71 @@
+﻿@model LibraryMVCProjects.Models.BookViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Books</h1>
+
+<div>
+    <form method="get">
+        <div class="form-group">
+            <div class="input-group">
+                <input type="search" class="form-control" placeholder="Search Author..." asp-for="SearchAuthor">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <form method="get">
+        <div class="form-group">
+            <div class="input-group">
+                <input type="search" class="form-control" placeholder="Search Book..." asp-for="SearchBook">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Author</th>
+                <th>Tittle</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model.Books)
+        {
+            <tr>
+                <td>@item.Author?.FirstName @item.Author?.LastName</td>
+                <td>@item.Title</td>
+                <td>
+                    <a class="btn btn-outline-secondary" asp-action="Detail" asp-route-Id="@item.Id"><i class="fas fa-search"></i></a>
+                    <a class="btn btn-outline-secondary" asp-action="Edit" asp-route-id="@item.Id">
+                        <i class="fas fa-edit"></i>
+                    </a>
+
+                    @*<a class="btn btn-success" asp-action="Delete" asp-route-Id="@item.Id">Delete</a>*@
+                </td>
+            </tr>
+        }
+        <tfoot style="visibility:@(!Model.Books.Any()? "visible" : "hidden")">
+            <tr>
+                <td colspan="3">
+                    Nothing to display.
+                </td>
+
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<div class="form-group">
+    <a class="btn btn-primary" asp-controller="BookMVC" asp-action="Edit">Add Book</a>
+</div>
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert alert-info">@Model.Message</div>
+}

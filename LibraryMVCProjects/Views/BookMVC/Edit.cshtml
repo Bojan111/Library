@@ -1,0 +1,26 @@
+﻿@model LibraryMVCProjects.Models.BookEditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Editing @Model.Book.Title</h2>
+<form method="post">
+    <input type="hidden" asp-for="Book.Id" />
+    <div class="form-row">
+        <div class="form-group col-sm-6">
+            <label asp-for="Book.Title"></label>
+            <input class="form-control" asp-for="Book.Title" />
+            <span class="text-danger" asp-validation-for="Book.Title"></span>
+        </div>
+        <div class="form-group col-sm-6">
+            <label asp-for="Book.AuthorId"></label>
+            <select class="form-control" asp-for="Book.AuthorId" asp-items="@Model.Authors">
+                <option value="">Pick a Author</option>
+            </select>
+            <span class="text-danger" asp-validation-for="Book.AuthorId"></span>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+

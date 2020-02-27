@@ -1,0 +1,22 @@
+﻿@model Library.Core.Book
+@{
+	ViewData["Title"] = "Detail";
+}
+
+<h1>Book Details</h1>
+<table class="table table-bordered">
+	<tr>
+		<td>Id</td>
+		<td>@Model.Id</td>
+	</tr>
+	@*<tr>
+		<td>Author</td>
+		<td>@Model.Author.FirstName @Model.Author.LastName</td>
+	</tr>*@
+	<tr>
+		<td>Book Title</td>
+		<td>@Model.Title</td>
+	</tr>
+</table>
+
+<a class="btn btn-primary" asp-controller="BookMVC" asp-action="Index">See all books</a>
