@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using Library.Core;
 using Library.Data;
 using LibraryMVCProjects.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace LibraryMVCProjects.Controllers
 {
+	[Authorize]
 	public class AuthorMVCController : Controller
 	{
 		private readonly IAuthor author;

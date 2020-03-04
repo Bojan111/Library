@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Library.Core;
 using Library.Data;
 using LibraryMVCProjects.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -12,6 +13,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace LibraryMVCProjects.Controllers
 {
+	[Authorize]
 	public class BookMVCController : Controller
 	{
 		private readonly IBook book;
