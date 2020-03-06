@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryMVCProjects.Controllers
 {
-	[Authorize]
+	
 	public class AuthorMVCController : Controller
 	{
 		private readonly IAuthor author;
@@ -36,6 +36,7 @@ namespace LibraryMVCProjects.Controllers
 			}
 			return View(authors);
 		}
+		[Authorize]
 		[HttpGet]
 		public IActionResult Edit(int? Id)
 		{

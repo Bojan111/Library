@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace LibraryMVCProjects.Controllers
 {
-	[Authorize]
+
 	public class BookMVCController : Controller
 	{
 		private readonly IBook book;
@@ -39,6 +39,7 @@ namespace LibraryMVCProjects.Controllers
 			}
 			return View(books);
 		}
+		[Authorize]
 		[HttpGet]
 		public IActionResult Edit(int? Id)
 		{
