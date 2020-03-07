@@ -1,4 +1,5 @@
 ﻿using System;
+using Library.Core.Auth;
 using Library.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -14,8 +15,16 @@ namespace LibraryMVCProjects.Areas.Identity
     {
         public void Configure(IWebHostBuilder builder)
         {
-            builder.ConfigureServices((context, services) => {
-                services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<LibraryDbContext>();
+            builder.ConfigureServices((context, services) =>
+            {
+                services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+                {
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequiredLength = 4;
+                    options.Password.RequireDigit = false;
+                })
+                .AddDefaultUI()
+                .AddEntityFrameworkStores<LibraryDbContext>();
             });
         }
     }
