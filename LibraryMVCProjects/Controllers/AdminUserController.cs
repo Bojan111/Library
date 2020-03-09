@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryMVCProjects.Controllers
 {
-    [Authorize(Roles = "Admin")]
+   [Authorize(Roles = "Admin")]
     public class AdminUserController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
